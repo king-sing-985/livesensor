@@ -1,2 +1,2 @@
 # livesensor
-This is a sensor fault tolerant project
+This is a sensor fault prediction project
