@@ -3,7 +3,7 @@ from sensor.exception import SensorException
 import os
 import sys
 from sensor.logger import logging
-# from sensor.utils import dump_csv_file_to_mongodb_collection
+from sensor.utils2 import dump_csv_file_to_mongodb_collection
 # from sensor.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig
 from sensor.pipeline.training_pipeline import TrainPipeline
 
@@ -22,8 +22,8 @@ if __name__ == "__main__":
 
     # dump_csv_file_to_mongodb_collection(file_path,database_name,collectin_name)
 
-    training_pioeline = TrainPipeline()
-    training_pioeline.run_pipeline()
+    training_pipeline = TrainPipeline()
+    training_pipeline.run_pipeline()
 
 
 
