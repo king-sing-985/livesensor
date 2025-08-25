@@ -1,0 +1,2 @@
+DATABASE_NAME = "Kiran"
+COLLECTION_NAME = "MongoClass"
