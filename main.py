@@ -3,7 +3,7 @@ from sensor.exception import SensorException
 import os
 import sys
 from sensor.logger import logging
-from sensor.utils2 import dump_csv_file_to_mongodb_collection
+# from sensor.utils2 import dump_csv_file_to_mongodb_collection
 # from sensor.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig
 from sensor.pipeline.training_pipeline import TrainPipeline
 
