@@ -16,6 +16,10 @@ from sensor.components.data_transformation import DataTransformation
 from sensor.entity.config_entity import DataTransformationConfig
 from sensor.entity.artifact_entity import DataTransformationArtifact
 
+from sensor.components.model_trainer import ModelTrainer
+from sensor.entity.artifact_entity import ModelTrainerArtifact
+from sensor.entity.config_entity import ModelTrainerConfig
+
 
 class TrainPipeline:
 
@@ -64,7 +68,23 @@ class TrainPipeline:
             return data_transformation_artifact
         except Exception as e:
             raise SensorException(e,sys)  from e
+        
+
+
     
+    def start_model_trainer(self, data_transformation_artifact: DataTransformationArtifact):
+        try:
+            model_trainer_config = ModelTrainerConfig(training_pipeline_config=self.training_pipeline_config)
+            model_trainer = ModelTrainer(model_trainer_config,data_transformation_artifact)
+            model_trainer_artifact = model_trainer.initiate_model_trainer()
+
+            return model_trainer_artifact
+
+        except Exception as e:
+            raise SensorException(e,sys)
+        
+        
+
 
     def run_pipeline(self):
         try:
@@ -74,7 +94,10 @@ class TrainPipeline:
             
             data_transformation_artifact: DataTransformationArtifact = self.start_data_transformation(data_validation_artifact=data_validation_artifact)
             
+            model_trainer_artifact: ModelTrainerArtifact = self.start_model_trainer(data_transformation_artifact)
         except Exception as e:
             raise SensorException(e,sys)
         
-            
+    
+
+    
